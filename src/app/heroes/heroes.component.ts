@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import { HEROES } from './../mock-heroes';
+// import { HEROES } from './../mock-heroes';
 import { Hero } from './hero';
 // import { Hero } from './hero';
+import {HeroService} from '../hero.service'
 
 @Component({
   selector: 'app-heroes',
@@ -15,11 +16,14 @@ export class HeroesComponent implements OnInit {
   //   id: 1,
   //   name: 'Windstorm',
   // }
-  heros =  HEROES;
+  // heros =  HEROES;
+  heros : Hero[];
 
-  constructor() { }
+  constructor(private heroService: HeroService) { }
 
   ngOnInit() {
+    // 初始化页面调用getHeroes方法
+    this.getHeroes();
   }
 
   selectHero: Hero;
@@ -28,6 +32,13 @@ export class HeroesComponent implements OnInit {
     console.log(hero,"hero");
     this.selectHero = hero;
     console.log(this.selectHero,"selectHero")
+  }
+
+  getHeroes(): void {
+    this.heros = this.heroService.getHeros();
+    console.log("this.heros",this.heros)
+    console.log("this.heroService",this.heroService)
+    console.log("this.heroService.getHeros()",this.heroService.getHeros())
   }
 
 }
