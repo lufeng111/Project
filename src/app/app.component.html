@@ -1,5 +1,14 @@
 <!--The content below is only a placeholder and can be replaced.-->
 <p>{{title}}<p>
-<app-heroes></app-heroes>
-<app-messages></app-messages>
+<!-- 移除掉 app-heroes 是因为只有在路由导航到这里时才显示这个组件，
+    router-outlet作用会告诉路由器，路由视图heroes.component组件显示的位置
+
+-->
+<!-- <app-heroes></app-heroes> -->
+<nav>
+    <a routerLink="/dashboard">Dashboard</a><br>
+    <a routerLink="/heroes">Heroes</a>
+</nav>
 <router-outlet></router-outlet>
+<app-messages></app-messages>
+
